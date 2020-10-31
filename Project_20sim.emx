@@ -1,0 +1,1778 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document>
+ <Model version="4.1" build="4.1.0.5">
+    <Sidops>
+<![CDATA[model 128 184 description '<Description>
+   <Version>4.1</Version>
+<IsMainModel>0</IsMainModel>
+ <KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>C:\Users\GASSER\Desktop\Milestone 2 bond\Milestone2.emx</LibraryPath>
+  <TimeStamp>2020-5-19 23:50:18</TimeStamp>
+</Description>'; type 'Mainmodel-E357' end; implementation bg  submodels   VBy 200 400    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\OneJunction.emx</LibraryPath> <TimeStamp>2007-9-27 9:51:18</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    knot OneJunction     ports      power knot duplicatable none p [1];      signal knot out flow [1];     restrictions      causality constraint one_out p;    end;    icon bg bottom     figures      text '1' 200 400 18 bold;    end;    implementation eqequations	sum (direct (p.e)) = 0;	equal (collect (p.f));	flow = first (p.f);implementation_end;   m1g 144 440    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\Se.emx</LibraryPath> <TimeStamp>2007-9-25 12:3:26</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type Se     ports      power out p;     restrictions      causality fixed out p;    end;    icon bg bottom     figures      text 'Se' 144 440 18 bold;    end;    implementation eqparameters	real effort = 0.5;variables	real flow;equations	p.e = -9.81*effort;	flow = p.f;implementation_end;   m1y 256 440    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\I.emx</LibraryPath> <TimeStamp>2007-9-25 12:2:12</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type I     ports      power in p;      signal out state;     restrictions      causality preferred in p;    end;    icon bg bottom     figures      text 'I' 256 440 18 bold;    end;    implementation eqparameters	real i = 0.25;equations    state = int(p.e);    p.f = state / i;implementation_end;   MTF3 104 328    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\MTF.emx</LibraryPath> <TimeStamp>2007-9-25 12:3:3</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type MTF     ports      power in p1;      power out p2;      signal in r;     restrictions      causality constraint not_equal p1 p2;    end;    icon bg bottom     figures      text 'MTF' 104 328 18 bold;    end;    implementation eqparametersreal l = 1.0;equations						p1.e = -l * cos(r) * p2.e;	p2.f = -l * cos(r) * p1.f;implementation_end;   ZeroJunction 320 376    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>   <LibraryPath>Bond Graph\ZeroJunction.emx</LibraryPath>  <TimeStamp>2007-9-27 9:51:43</TimeStamp></Description>';    knot ZeroJunction     ports      power knot duplicatable none p [1];      signal knot out effort [1];     restrictions      causality constraint one_in p;    end;    icon bg     figures      text '0' 320 376 18 bold;    end;    implementation eqequations	sum (direct (p.f)) = 0;	equal (collect (p.e));	effort = first (p.e);implementation_end;   MTF4 104 232    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\MTF.emx</LibraryPath> <TimeStamp>2007-9-25 12:3:3</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type MTF     ports      power in p1;      power out p2;      signal in r;     restrictions      causality constraint not_equal p1 p2;    end;    icon bg bottom     figures      text 'MTF' 104 232 18 bold;    end;    implementation eqparametersreal l = 1.0;equations						p1.e = l * sin(r) * p2.e;	p2.f = l * sin(r) * p1.f;implementation_end;   MTF1 304 216    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\MTF.emx</LibraryPath> <TimeStamp>2007-9-25 12:3:3</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type MTF     ports      power in p1;      power out p2;      signal in r;     restrictions      causality constraint not_equal p1 p2;    end;    icon bg bottom     figures      text 'MTF' 304 216 18 bold;    end;    implementation eqparametersreal l = 1.0;equations						p1.e = -l * sin(r) * p2.e;	p2.f = -l * sin(r) * p1.f;implementation_end;   W1 200 216    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\OneJunction.emx</LibraryPath> <TimeStamp>2007-9-27 9:51:18</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    knot OneJunction     ports      power knot duplicatable none p [1];      signal knot out flow [1];     restrictions      causality constraint one_out p;    end;    icon bg top     figures      text '1' 200 216 18 bold;    end;    implementation eqequations	sum (direct (p.e)) = 0;	equal (collect (p.f));	flow = first (p.f);implementation_end;   VBx 176 56    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\OneJunction.emx</LibraryPath> <TimeStamp>2007-9-27 9:51:18</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    knot OneJunction     ports      power knot duplicatable none p [1];      signal knot out flow [1];     restrictions      causality constraint one_out p;    end;    icon bg bottom     figures      text '1' 176 56 18 bold;    end;    implementation eqequations	sum (direct (p.e)) = 0;	equal (collect (p.f));	flow = first (p.f);implementation_end;   ZeroJunction1 320 104    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>   <LibraryPath>Bond Graph\ZeroJunction.emx</LibraryPath>  <TimeStamp>2007-9-27 9:51:43</TimeStamp></Description>';    knot ZeroJunction     ports      power knot duplicatable none p [1];      signal knot out effort [1];     restrictions      causality constraint one_in p;    end;    icon bg     figures      text '0' 320 104 18 bold;    end;    implementation eqequations	sum (direct (p.f)) = 0;	equal (collect (p.e));	effort = first (p.e);implementation_end;   I1 240 144    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\I.emx</LibraryPath> <TimeStamp>2007-9-25 12:2:12</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type I     ports      power in p;      signal out state;     restrictions      causality preferred in p;    end;    icon bg right     figures      text 'I' 240 144 18 bold;    end;    implementation eqparameters	real i = 0.5;equations    state = int(p.e);    p.f = state / i;implementation_end;   m1x 176 16    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\I.emx</LibraryPath> <TimeStamp>2007-9-25 12:2:12</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type I     ports      power in p;      signal out state;     restrictions      causality preferred in p;    end;    icon bg left     figures      text 'I' 176 16 18 bold;    end;    implementation eqparameters	real i = 0.25;equations    state = int(p.e);    p.f = state / i;implementation_end;   Vdy 544 400    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\OneJunction.emx</LibraryPath> <TimeStamp>2007-9-27 9:51:18</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    knot OneJunction     ports      power knot duplicatable none p [1];      signal knot out flow [1];     restrictions      causality constraint one_out p;    end;    icon bg bottom     figures      text '1' 544 400 18 bold;    end;    implementation eqequations	sum (direct (p.e)) = 0;	equal (collect (p.f));	flow = first (p.f);implementation_end;   m2g 480 440    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\Se.emx</LibraryPath> <TimeStamp>2007-9-25 12:3:26</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type Se     ports      power out p;     restrictions      causality fixed out p;    end;    icon bg bottom     figures      text 'Se' 480 440 18 bold;    end;    implementation eqparameters	real effort = 0.25;variables	real flow;equations	p.e = -9.81*effort;	flow = p.f;implementation_end;   m2y 599 443    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\I.emx</LibraryPath> <TimeStamp>2007-9-25 12:2:12</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type I     ports      power in p;      signal out state;     restrictions      causality preferred in p;    end;    icon bg bottom     figures      text 'I' 599 443 18 bold;    end;    implementation eqparameters	real i = 0.125;equations    state = int(p.e);    p.f = state / i;implementation_end;   MTF3_middle 440 328    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\MTF.emx</LibraryPath> <TimeStamp>2007-9-25 12:3:3</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type MTF     ports      power in p1;      power out p2;      signal in r;     restrictions      causality constraint not_equal p1 p2;    end;    icon bg bottom     figures      text 'MTF' 440 328 18 bold;    end;    implementation eqparametersreal l = 1.0;equations						p1.e = -l * cos(r) * p2.e;	p2.f = -l * cos(r) * p1.f;implementation_end;   ZeroJunction2 632 376    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>   <LibraryPath>Bond Graph\ZeroJunction.emx</LibraryPath>  <TimeStamp>2007-9-27 9:51:43</TimeStamp></Description>';    knot ZeroJunction     ports      power knot duplicatable none p [1];      signal knot out effort [1];     restrictions      causality constraint one_in p;    end;    icon bg     figures      text '0' 632 376 18 bold;    end;    implementation eqequations	sum (direct (p.f)) = 0;	equal (collect (p.e));	effort = first (p.e);implementation_end;   MTF2_middle 648 328    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\MTF.emx</LibraryPath> <TimeStamp>2007-9-25 12:3:3</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type MTF     ports      power in p1;      power out p2;      signal in r;     restrictions      causality constraint not_equal p1 p2;    end;    icon bg bottom     figures      text 'MTF' 648 328 18 bold;    end;    implementation eqparametersreal l = 1.0;equations						p1.e = l * cos(r) * p2.e;	p2.f = 1 * cos(r) * p1.f;implementation_end;   MTF1_middle 656 216    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\MTF.emx</LibraryPath> <TimeStamp>2007-9-25 12:3:3</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type MTF     ports      power in p1;      power out p2;      signal in r;     restrictions      causality constraint not_equal p1 p2;    end;    icon bg bottom     figures      text 'MTF' 656 216 18 bold;    end;    implementation eqparametersreal l = 1.0;equations						p1.e = -l * sin(r) * p2.e;	p2.f = -l * sin(r) * p1.f;implementation_end;   Integrate_middle 536 280    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Signal\Block Diagram\Integrate.emx</LibraryPath> <TimeStamp>2007-9-26 12:3:23</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type Integrate     ports      signal in input;      signal out output;    end;    icon bg bottom     figures      rectangle 520 264 552 296 fill 15132390;      text 'ò' 536 277.3 color 16711680 'SymbolProp BT' 21 symbol;    end;    implementation eqparameters	real initial = 1.505;		// initial valueequations	output = int (input, initial);     implementation_end;   W2 536 216    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\OneJunction.emx</LibraryPath> <TimeStamp>2007-9-27 9:51:18</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    knot OneJunction     ports      power knot duplicatable none p [1];      signal knot out flow [1];     restrictions      causality constraint one_out p;    end;    icon bg top     figures      text '1' 536 216 18 bold;    end;    implementation eqequations	sum (direct (p.e)) = 0;	equal (collect (p.f));	flow = first (p.f);implementation_end;   I2 568 144    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\I.emx</LibraryPath> <TimeStamp>2007-9-25 12:2:12</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type I     ports      power in p;      signal out state;     restrictions      causality preferred in p;    end;    icon bg right     figures      text 'I' 568 144 18 bold;    end;    implementation eqparameters	real i = 0.25;equations    state = int(p.e);    p.f = state / i;implementation_end;   Vfy 864 408    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\OneJunction.emx</LibraryPath> <TimeStamp>2007-9-27 9:51:18</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    knot OneJunction     ports      power knot duplicatable none p [1];      signal knot out flow [1];     restrictions      causality constraint one_out p;    end;    icon bg bottom     figures      text '1' 864 408 18 bold;    end;    implementation eqequations	sum (direct (p.e)) = 0;	equal (collect (p.f));	flow = first (p.f);implementation_end;   m3g 800 440    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\Se.emx</LibraryPath> <TimeStamp>2007-9-25 12:3:26</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type Se     ports      power out p;     restrictions      causality fixed out p;    end;    icon bg bottom     figures      text 'Se' 800 440 18 bold;    end;    implementation eqparameters	real effort = 0.5;variables	real flow;equations	p.e = -9.81*effort;	flow = p.f;implementation_end;   m3y 912 440    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\I.emx</LibraryPath> <TimeStamp>2007-9-25 12:2:12</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type I     ports      power in p;      signal out state;     restrictions      causality preferred in p;    end;    icon bg bottom     figures      text 'I' 912 440 18 bold;    end;    implementation eqparameters	real i = 0.25;equations    state = int(p.e);    p.f = state / i;implementation_end;   MTF2_right 952 328    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\MTF.emx</LibraryPath> <TimeStamp>2007-9-25 12:3:3</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type MTF     ports      power in p1;      power out p2;      signal in r;     restrictions      causality constraint not_equal p1 p2;    end;    icon bg bottom     figures      text 'MTF' 952 328 18 bold;    end;    implementation eqparametersreal l = 1.0;equations						p1.e = l * cos(r) * p2.e;	p2.f = l * cos(r) * p1.f;implementation_end;   MTF4_right 768 216    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\MTF.emx</LibraryPath> <TimeStamp>2007-9-25 12:3:3</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type MTF     ports      power in p1;      power out p2;      signal in r;     restrictions      causality constraint not_equal p1 p2;    end;    icon bg bottom     figures      text 'MTF' 768 216 18 bold;    end;    implementation eqparametersreal l = 1.0;equations						p1.e = l * sin(r) * p2.e;	p2.f = l * sin(r) * p1.f;	implementation_end;   Integrate_right 856 280    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Signal\Block Diagram\Integrate.emx</LibraryPath> <TimeStamp>2007-9-26 12:3:23</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type Integrate     ports      signal in input;      signal out output;    end;    icon bg bottom     figures      rectangle 840 264 872 296 fill 15132390;      text 'ò' 856 277.3 color 16711680 'SymbolProp BT' 21 symbol;    end;    implementation eqparameters	real initial = 0.0;		// initial valueequations	output = int (input, initial);     implementation_end;   W3 856 216    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\OneJunction.emx</LibraryPath> <TimeStamp>2007-9-27 9:51:18</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    knot OneJunction     ports      power knot duplicatable none p [1];      signal knot out flow [1];     restrictions      causality constraint one_out p;    end;    icon bg top     figures      text '1' 856 216 18 bold;    end;    implementation eqequations	sum (direct (p.e)) = 0;	equal (collect (p.f));	flow = first (p.f);implementation_end;   Vfx 880 64    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\OneJunction.emx</LibraryPath> <TimeStamp>2007-9-27 9:51:18</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    knot OneJunction     ports      power knot duplicatable none p [1];      signal knot out flow [1];     restrictions      causality constraint one_out p;    end;    icon bg bottom     figures      text '1' 880 64 18 bold;    end;    implementation eqequations	sum (direct (p.e)) = 0;	equal (collect (p.f));	flow = first (p.f);implementation_end;   I3 896 152    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\I.emx</LibraryPath> <TimeStamp>2007-9-25 12:2:12</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type I     ports      power in p;      signal out state;     restrictions      causality preferred in p;    end;    icon bg right     figures      text 'I' 896 152 18 bold;    end;    implementation eqparameters	real i = 0.5;equations    state = int(p.e);    p.f = state / i;implementation_end;   m3x 880 16    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\I.emx</LibraryPath> <TimeStamp>2007-9-25 12:2:12</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type I     ports      power in p;      signal out state;     restrictions      causality preferred in p;    end;    icon bg left     figures      text 'I' 880 16 18 bold;    end;    implementation eqparameters	real i = 0.25;equations    state = int(p.e);    p.f = state / i;implementation_end;   VCx 376 48    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\OneJunction.emx</LibraryPath> <TimeStamp>2007-9-27 9:51:18</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    knot OneJunction     ports      power knot duplicatable none p [1];      signal knot out flow [1];     restrictions      causality constraint one_out p;    end;    icon bg bottom     figures      text '1' 376 48 18 bold;    end;    implementation eqequations	sum (direct (p.e)) = 0;	equal (collect (p.f));	flow = first (p.f);implementation_end;   VCy 376 408    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\OneJunction.emx</LibraryPath> <TimeStamp>2007-9-27 9:51:18</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    knot OneJunction     ports      power knot duplicatable none p [1];      signal knot out flow [1];     restrictions      causality constraint one_out p;    end;    icon bg bottom     figures      text '1' 376 408 18 bold;    end;    implementation eqequations	sum (direct (p.e)) = 0;	equal (collect (p.f));	flow = first (p.f);implementation_end;   ZeroJunction7 440 376    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>   <LibraryPath>Bond Graph\ZeroJunction.emx</LibraryPath>  <TimeStamp>2007-9-27 9:51:43</TimeStamp></Description>';    knot ZeroJunction     ports      power knot duplicatable none p [1];      signal knot out effort [1];     restrictions      causality constraint one_in p;    end;    icon bg     figures      text '0' 440 376 18 bold;    end;    implementation eqequations	sum (direct (p.f)) = 0;	equal (collect (p.e));	effort = first (p.e);implementation_end;   ZeroJunction8 768 104    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>   <LibraryPath>Bond Graph\ZeroJunction.emx</LibraryPath>  <TimeStamp>2007-9-27 9:51:43</TimeStamp></Description>';    knot ZeroJunction     ports      power knot duplicatable none p [1];      signal knot out effort [1];     restrictions      causality constraint one_in p;    end;    icon bg     figures      text '0' 768 104 18 bold;    end;    implementation eqequations	sum (direct (p.f)) = 0;	equal (collect (p.e));	effort = first (p.e);implementation_end;   ZeroJunction9 768 376    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>   <LibraryPath>Bond Graph\ZeroJunction.emx</LibraryPath>  <TimeStamp>2007-9-27 9:51:43</TimeStamp></Description>';    knot ZeroJunction     ports      power knot duplicatable none p [1];      signal knot out effort [1];     restrictions      causality constraint one_in p;    end;    icon bg     figures      text '0' 768 376 18 bold;    end;    implementation eqequations	sum (direct (p.f)) = 0;	equal (collect (p.e));	effort = first (p.e);implementation_end;   VEx 712 24    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\OneJunction.emx</LibraryPath> <TimeStamp>2007-9-27 9:51:18</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    knot OneJunction     ports      power knot duplicatable none p [1];      signal knot out flow [1];     restrictions      causality constraint one_out p;    end;    icon bg bottom     figures      text '1' 712 24 18 bold;    end;    implementation eqequations	sum (direct (p.e)) = 0;	equal (collect (p.f));	flow = first (p.f);implementation_end;   VEy 704 400    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\OneJunction.emx</LibraryPath> <TimeStamp>2007-9-27 9:51:18</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    knot OneJunction     ports      power knot duplicatable none p [1];      signal knot out flow [1];     restrictions      causality constraint one_out p;    end;    icon bg bottom     figures      text '1' 704 400 18 bold;    end;    implementation eqequations	sum (direct (p.e)) = 0;	equal (collect (p.f));	flow = first (p.f);implementation_end;   MTF4_middle 424 216    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\MTF.emx</LibraryPath> <TimeStamp>2007-9-25 12:3:3</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type MTF     ports      power in p1;      power out p2;      signal in r;     restrictions      causality constraint not_equal p1 p2;    end;    icon bg bottom     figures      text 'MTF' 424 216 18 bold;    end;    implementation eqparametersreal l = 1.0;equations						p1.e = l * sin(r) * p2.e;	p2.f = l * sin(r) * p1.f;implementation_end;   Splitter1 536 328    description '<Description><Version>4.0</Version>   <LibraryPath>Signal\Block Diagram\Splitter.emx</LibraryPath>  <TimeStamp>2008-01-17 11:28:29</TimeStamp><IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues></Description>';    knot Splitter     ports      signal knot duplicatable out output [1];      signal knot in input [1];    end;    icon bg ellipse     figures      ellipse 532.8 324.8 539.2 331.2 color -1 fill 0;      ellipse 531.7 323.7 540.3 332.3 color -1;     terminals      input 536 328 fixed;    end;    implementation eqequations    collect (output) = input;implementation_end;   Splitter2 856 328    description '<Description><Version>4.0</Version>   <LibraryPath>Signal\Block Diagram\Splitter.emx</LibraryPath>  <TimeStamp>2008-01-17 11:28:29</TimeStamp><IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues></Description>';    knot Splitter     ports      signal knot duplicatable out output [1];      signal knot in input [1];    end;    icon bg ellipse     figures      ellipse 852.8 324.8 859.2 331.2 color -1 fill 0;      ellipse 851.7 323.7 860.3 332.3 color -1;     terminals      input 856 328 fixed;    end;    implementation eqequations    collect (output) = input;implementation_end;   Integrate_left 200 280    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Signal\Block Diagram\Integrate.emx</LibraryPath> <TimeStamp>2007-9-26 12:3:23</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type Integrate     ports      signal in input;      signal out output;    end;    icon bg bottom     figures      rectangle 184 264 216 296 fill 15132390;      text 'ò' 200 277.3 color 16711680 'SymbolProp BT' 21 symbol;    end;    implementation eqparameters	real initial = 0.0;		// initial valueequations	output = int (input, initial);     implementation_end;   Splitter3 200 328    description '<Description><Version>4.0</Version>   <LibraryPath>Signal\Block Diagram\Splitter.emx</LibraryPath>  <TimeStamp>2008-01-17 11:28:29</TimeStamp><IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues></Description>';    knot Splitter     ports      signal knot duplicatable out output [1];      signal knot in input [1];    end;    icon bg ellipse     figures      ellipse 196.8 324.8 203.2 331.2 color -1 fill 0;      ellipse 195.7 323.7 204.3 332.3 color -1;     terminals      input 200 328 fixed;    end;    implementation eqequations    collect (output) = input;implementation_end;   MTF3_right 768 328    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\MTF.emx</LibraryPath> <TimeStamp>2007-9-25 12:3:3</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type MTF     ports      power in p1;      power out p2;      signal in r;     restrictions      causality constraint not_equal p1 p2;    end;    icon bg bottom     figures      text 'MTF' 768 328 18 bold;    end;    implementation eqparametersreal l = 1.0;equations						p1.e = -l * cos(r) * p2.e;	p2.f = -l * cos(r) * p1.f;implementation_end;   MTF1_right 960 216    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\MTF.emx</LibraryPath> <TimeStamp>2007-9-25 12:3:3</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type MTF     ports      power in p1;      power out p2;      signal in r;     restrictions      causality constraint not_equal p1 p2;    end;    icon bg bottom     figures      text 'MTF' 960 216 18 bold;    end;    implementation eqparametersreal l = 1.0;equations						p1.e = -l * sin(r) * p2.e;	p2.f = -l * sin(r) * p1.f;implementation_end;   ZeroJunction3 960 112    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>   <LibraryPath>Bond Graph\ZeroJunction.emx</LibraryPath>  <TimeStamp>2007-9-27 9:51:43</TimeStamp></Description>';    knot ZeroJunction     ports      power knot duplicatable none p [1];      signal knot out effort [1];     restrictions      causality constraint one_in p;    end;    icon bg     figures      text '0' 960 112 18 bold;    end;    implementation eqequations	sum (direct (p.f)) = 0;	equal (collect (p.e));	effort = first (p.e);implementation_end;   sffx1jun 1016 72    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\OneJunction.emx</LibraryPath> <TimeStamp>2007-9-27 9:51:18</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    knot OneJunction     ports      power knot duplicatable none p [1];      signal knot out flow [1];     restrictions      causality constraint one_out p;    end;    icon bg right     figures      text '1' 1016 72 18 bold;    end;    implementation eqequations	sum (direct (p.e)) = 0;	equal (collect (p.f));	flow = first (p.f);implementation_end;   Sffx 1072 112    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\Sf.emx</LibraryPath> <TimeStamp>2007-9-25 12:3:35</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type Sf     ports      power out p;     restrictions      causality fixed in p;    end;    icon bg bottom     figures      text 'Sf' 1072 112 18 bold;    end;    implementation eqparameters	real flow = 0.0;variables	real effort;equations	p.f = flow;	effort = p.e;implementation_end;   ZeroJunction4 952 384    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>   <LibraryPath>Bond Graph\ZeroJunction.emx</LibraryPath>  <TimeStamp>2007-9-27 9:51:43</TimeStamp></Description>';    knot ZeroJunction     ports      power knot duplicatable none p [1];      signal knot out effort [1];     restrictions      causality constraint one_in p;    end;    icon bg     figures      text '0' 952 384 18 bold;    end;    implementation eqequations	sum (direct (p.f)) = 0;	equal (collect (p.e));	effort = first (p.e);implementation_end;   sffy1jun 1016 408    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\OneJunction.emx</LibraryPath> <TimeStamp>2007-9-27 9:51:18</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    knot OneJunction     ports      power knot duplicatable none p [1];      signal knot out flow [1];     restrictions      causality constraint one_out p;    end;    icon bg     figures      text '1' 1016 408 18 bold;    end;    implementation eqequations	sum (direct (p.e)) = 0;	equal (collect (p.f));	flow = first (p.f);implementation_end;   Sffy 1072 384    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\Sf.emx</LibraryPath> <TimeStamp>2007-9-25 12:3:35</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type Sf     ports      power out p;     restrictions      causality fixed in p;    end;    icon bg bottom     figures      text 'Sf' 1072 384 18 bold;    end;    implementation eqparameters	real flow = 0.0;variables	real effort;equations	p.f = flow;	effort = p.e;implementation_end;   ZeroJunction5 104 376    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>   <LibraryPath>Bond Graph\ZeroJunction.emx</LibraryPath>  <TimeStamp>2007-9-27 9:51:43</TimeStamp></Description>';    knot ZeroJunction     ports      power knot duplicatable none p [1];      signal knot out effort [1];     restrictions      causality constraint one_in p;    end;    icon bg     figures      text '0' 104 376 18 bold;    end;    implementation eqequations	sum (direct (p.f)) = 0;	equal (collect (p.e));	effort = first (p.e);implementation_end;   ZeroJunction6 104 104    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>   <LibraryPath>Bond Graph\ZeroJunction.emx</LibraryPath>  <TimeStamp>2007-9-27 9:51:43</TimeStamp></Description>';    knot ZeroJunction     ports      power knot duplicatable none p [1];      signal knot out effort [1];     restrictions      causality constraint one_in p;    end;    icon bg     figures      text '0' 104 104 18 bold;    end;    implementation eqequations	sum (direct (p.f)) = 0;	equal (collect (p.e));	effort = first (p.e);implementation_end;   K1 176 144    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\C.emx</LibraryPath> <TimeStamp>2007-10-31 10:43:59</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type C     ports      power in p;      signal out state;     restrictions      causality preferred out p;    end;    icon bg bottom     figures      text 'C' 176 144 18 bold;    end;    implementation eqparameters	real c = 1.0;equations    state = int(p.f);    p.e = state / c;implementation_end;   K3 824 160    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\C.emx</LibraryPath> <TimeStamp>2007-10-31 10:43:59</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type C     ports      power in p;      signal out state;     restrictions      causality preferred out p;    end;    icon bg bottom     figures      text 'C' 824 160 18 bold;    end;    implementation eqparameters	real c = 1.0;equations    state = int(p.f);    p.e = state / c;implementation_end;   OneJunction2 64 56    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\OneJunction.emx</LibraryPath> <TimeStamp>2007-9-27 9:51:18</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    knot OneJunction     ports      power knot duplicatable none p [1];      signal knot out flow [1];     restrictions      causality constraint one_out p;    end;    icon bg     figures      text '1' 64 56 18 bold;    end;    implementation eqequations	sum (direct (p.e)) = 0;	equal (collect (p.f));	flow = first (p.f);implementation_end;   SfBx 8 104    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\Sf.emx</LibraryPath> <TimeStamp>2007-9-25 12:3:35</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type Sf     ports      power out p;     restrictions      causality fixed in p;    end;    icon bg bottom     figures      text 'Sf' 8 104 18 bold;    end;    implementation eqparameters	real flow = 0.0;variables	real effort;equations	p.f = flow;	effort = p.e;implementation_end;   SfBy 16 376    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\Sf.emx</LibraryPath> <TimeStamp>2007-9-25 12:3:35</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type Sf     ports      power out p;     restrictions      causality fixed in p;    end;    icon bg bottom     figures      text 'Sf' 16 376 18 bold;    end;    implementation eqparameters	real flow = 0.0;variables	real effort;equations	p.f = flow;	effort = p.e;implementation_end;   sfby1jun 56 408    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\OneJunction.emx</LibraryPath> <TimeStamp>2007-9-27 9:51:18</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    knot OneJunction     ports      power knot duplicatable none p [1];      signal knot out flow [1];     restrictions      causality constraint one_out p;    end;    icon bg     figures      text '1' 56 408 18 bold;    end;    implementation eqequations	sum (direct (p.e)) = 0;	equal (collect (p.f));	flow = first (p.f);implementation_end;   MTF2 320 328    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>   <LibraryPath>Bond Graph\MTF.emx</LibraryPath>  <TimeStamp>2007-9-25 12:3:3</TimeStamp></Description>';    type MTF     ports      power in p1;      power out p2;      signal in r;     restrictions      causality constraint not_equal p1 p2;    end;    icon bg bottom     figures      text 'MTF' 320 328 18 bold;    end;    implementation eqparametersreal l = 1.0;equations						p1.e = l * cos(r) * p2.e;	p2.f = l * cos(r) * p1.f;implementation_end;   Vdx 544 72    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\OneJunction.emx</LibraryPath> <TimeStamp>2007-9-27 9:51:18</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    knot OneJunction     ports      power knot duplicatable none p [1];      signal knot out flow [1];     restrictions      causality constraint one_out p;    end;    icon bg bottom     figures      text '1' 544 72 18 bold;    end;    implementation eqequations	sum (direct (p.e)) = 0;	equal (collect (p.f));	flow = first (p.f);implementation_end;   m2x 544 16    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\I.emx</LibraryPath> <TimeStamp>2007-9-25 12:2:12</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type I     ports      power in p;      signal out state;     restrictions      causality preferred in p;    end;    icon bg left     figures      text 'I' 544 16 18 bold;    end;    implementation eqparameters	real i = 0.125;equations    state = int(p.e);    p.f = state / i;implementation_end;   ZeroJunction10 424 96    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>   <LibraryPath>Bond Graph\ZeroJunction.emx</LibraryPath>  <TimeStamp>2007-9-27 9:51:43</TimeStamp></Description>';    knot ZeroJunction     ports      power knot duplicatable none p [1];      signal knot out effort [1];     restrictions      causality constraint one_in p;    end;    icon bg     figures      text '0' 424 96 18 bold;    end;    implementation eqequations	sum (direct (p.f)) = 0;	equal (collect (p.e));	effort = first (p.e);implementation_end;   ZeroJunction11 656 88    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>   <LibraryPath>Bond Graph\ZeroJunction.emx</LibraryPath>  <TimeStamp>2007-9-27 9:51:43</TimeStamp></Description>';    knot ZeroJunction     ports      power knot duplicatable none p [1];      signal knot out effort [1];     restrictions      causality constraint one_in p;    end;    icon bg     figures      text '0' 656 88 18 bold;    end;    implementation eqequations	sum (direct (p.f)) = 0;	equal (collect (p.e));	effort = first (p.e);implementation_end;   K2 496 144    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\C.emx</LibraryPath> <TimeStamp>2007-10-31 10:43:59</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type C     ports      power in p;      signal out state;     restrictions      causality preferred out p;    end;    icon bg bottom     figures      text 'C' 496 144 18 bold;    end;    implementation eqparameters	real c = 1.0;equations    state = int(p.f);    p.e = state / c;implementation_end;   R 256 184    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>   <LibraryPath>Bond Graph\R.emx</LibraryPath>  <TimeStamp>2007-9-25 12:3:18</TimeStamp></Description>';    type R     ports      power in p;    end;    icon bg bottom     figures      text 'R' 256 184 18 bold;    end;    implementation eqparameters	real r = 1.0;equations						p.e = r * p.f;implementation_end;   R1 584 176    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>   <LibraryPath>Bond Graph\R.emx</LibraryPath>  <TimeStamp>2007-9-25 12:3:18</TimeStamp></Description>';    type R     ports      power in p;    end;    icon bg bottom     figures      text 'R' 584 176 18 bold;    end;    implementation eqparameters	real r = 1.0;equations						p.e = r * p.f;implementation_end;   R2 912 184    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>   <LibraryPath>Bond Graph\R.emx</LibraryPath>  <TimeStamp>2007-9-25 12:3:18</TimeStamp></Description>';    type R     ports      power in p;    end;    icon bg bottom     figures      text 'R' 912 184 18 bold;    end;    implementation eqparameters	real r = 1.0;equations						p.e = r * p.f;implementation_end;   Desired_theta_right 816 496    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Signal\Sources\Constant.emx</LibraryPath> <TimeStamp>2007-10-19 14:48:44</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type Constant     ports      signal out output;    end;    icon bg bottom     figures      rectangle 800.1 480 831.9 512 fill 15132390;      line 804.9 491.6 826.9 491.6 color 16711680 width 2;      line 802.2 502.7 827.9 502.7;      line 804.5 486.7 804.5 505;    end;    implementation eqparameters	real C = 0.9;		// output valueequations	output = C;     implementation_end;   OneJunction1 1272 496    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>   <LibraryPath>Bond Graph\OneJunction.emx</LibraryPath>  <TimeStamp>2007-9-27 9:51:18</TimeStamp></Description>';    knot OneJunction     ports      power knot duplicatable none p [1];      signal knot out flow [1];     restrictions      causality constraint one_out p;    end;    icon bg     figures      text '1' 1272 496 18 bold;    end;    implementation eqequations	sum (direct (p.e)) = 0;	equal (collect (p.f));	flow = first (p.f);implementation_end;   R_motor1 1272 544    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\R.emx</LibraryPath> <TimeStamp>2007-9-25 12:3:18</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type R     ports      power in p;    end;    icon bg bottom     figures      text 'R' 1272 544 18 bold;    end;    implementation eqparameters	real r = 0.181;equations						p.e = r * p.f;implementation_end;   GY1 1336 496    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>   <LibraryPath>Bond Graph\GY.emx</LibraryPath>  <TimeStamp>2007-9-25 12:2:4</TimeStamp></Description>';    type GY     ports      power in p1;      power out p2;     restrictions      causality constraint equal p1 p2;    end;    icon bg bottom     figures      text 'GY' 1336 496 18 bold;    end;    implementation eqparameters	real Km = 1.5;equations	p1.e = Km * p2.f;	p2.e = Km * p1.f;implementation_end;   MSe_volt1 1208 496    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\MSe.emx</LibraryPath> <TimeStamp>2007-9-25 12:2:44</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type MSe     ports      power out p;      signal in effort;     restrictions      causality fixed out p;    end;    icon bg bottom     figures      text 'MSe' 1208 496 18 bold;    end;    implementation eqvariables	real flow;equations	p.e = effort;	flow = p.f;implementation_end;   I_motor1 1272 392    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Bond Graph\I.emx</LibraryPath> <TimeStamp>2007-9-25 12:2:12</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type I     ports      power in p;      signal out state;     restrictions      causality preferred in p;    end;    icon bg bottom     figures      text 'I' 1272 392 18 bold;    end;    implementation eqparameters	real i = 0.1;equations    state = int(p.e);    p.f = state / i;implementation_end;   PlusMinus 936 504    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>   <LibraryPath>Signal\Block Diagram\PlusMinus.emx</LibraryPath>  <TimeStamp>2007-9-27 10:15:13</TimeStamp></Description>';    knot PlusMinus     ports      signal knot duplicatable in plus [1];      signal knot duplicatable in minus [1];      signal knot out output [1];    end;    icon bg ellipse     figures      ellipse 928 496 944 512 fill 16777215;    end;    implementation eqequations    output = -sum (collect (plus)) + sum (collect (minus));    implementation_end;   Gain1 1040 504    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Signal\Block Diagram\Gain.emx</LibraryPath> <TimeStamp>2007-9-26 12:15:12</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type Gain     ports      signal in input;      signal out output;    end;    icon bg bottom     figures      rectangle 1024.1 488 1055.9 520 fill 15132390;      text 'K' 1040 504 color 16711680 16 bold;    end;    implementation eqparameters	real K = 0.5;		// gainequations	output = K * input;    implementation_end;   Splitter4 856 240    description '<Description><Version>4.0</Version>   <LibraryPath>Signal\Block Diagram\Splitter.emx</LibraryPath>  <TimeStamp>2008-01-17 11:28:29</TimeStamp><IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues></Description>';    knot Splitter     ports      signal knot duplicatable out output [1];      signal knot in input [1];    end;    icon bg ellipse     figures      ellipse 852.8 236.8 859.2 243.2 color -1 fill 0;      ellipse 851.7 235.7 860.3 244.3 color -1;     terminals      input 856 240 fixed;    end;    implementation eqequations    collect (output) = input;implementation_end;   Sf 144 160    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>   <LibraryPath>Bond Graph\Sf.emx</LibraryPath>  <TimeStamp>2007-9-25 12:3:35</TimeStamp></Description>';    type Sf     ports      power out p;     restrictions      causality fixed in p;    end;    icon bg bottom     figures      text 'Sf' 144 160 18 bold;    end;    implementation eqparameters	real flow = 1;variables	real effort;equations	p.f = flow * sin(6*time);	effort = p.e;implementation_end;   OneJunction 1456 488    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>   <LibraryPath>Bond Graph\OneJunction.emx</LibraryPath>  <TimeStamp>2007-9-27 9:51:18</TimeStamp></Description>';    knot OneJunction     ports      power knot duplicatable none p [1];      signal knot out flow [1];     restrictions      causality constraint one_out p;    end;    icon bg     figures      text '1' 1456 488 18 bold;    end;    implementation eqequations	sum (direct (p.e)) = 0;	equal (collect (p.f));	flow = first (p.f);implementation_end;   Cy 376 352    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Signal\Block Diagram\Integrate.emx</LibraryPath> <TimeStamp>2007-9-26 12:3:23</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type Integrate     ports      signal in input;      signal out output;    end;    icon bg bottom     figures      rectangle 360 336 392 368 fill 15132390;      text 'ò' 376 349.3 color 16711680 'SymbolProp BT' 21 symbol;    end;    implementation eqparameters	real initial = 2.0;		// initial valueequations	output = int (input, initial);     implementation_end;   Ey 704 344    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Signal\Block Diagram\Integrate.emx</LibraryPath> <TimeStamp>2007-9-26 12:3:23</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type Integrate     ports      signal in input;      signal out output;    end;    icon bg bottom     figures      rectangle 688 328 720 360 fill 15132390;      text 'ò' 704 341.3 color 16711680 'SymbolProp BT' 21 symbol;    end;    implementation eqparameters	real initial = 1.0;		// initial valueequations	output = int (input, initial);     implementation_end;   Cx 376 128    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Signal\Block Diagram\Integrate.emx</LibraryPath> <TimeStamp>2007-9-26 12:3:23</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type Integrate     ports      signal in input;      signal out output;    end;    icon bg bottom     figures      rectangle 360 112 392 144 fill 15132390;      text 'ò' 376 125.3 color 16711680 'SymbolProp BT' 21 symbol;    end;    implementation eqparameters	real initial = 1.0;		// initial valueequations	output = int (input, initial);     implementation_end;   Ex 712 152    description '<Description> <Version>4.0</Version> <IsMainModel>1</IsMainModel> <KeepParameterValues>False</KeepParameterValues> <LibraryPath>Signal\Block Diagram\Integrate.emx</LibraryPath> <TimeStamp>2007-9-26 12:3:23</TimeStamp> <AllowLibraryUpdate>True</AllowLibraryUpdate></Description>';    type Integrate     ports      signal in input;      signal out output;    end;    icon bg bottom     figures      rectangle 696 136 728 168 fill 15132390;      text 'ò' 712 149.3 color 16711680 'SymbolProp BT' 21 symbol;    end;    implementation eqparameters	real initial = 1.0;		// initial valueequations	output = int (input, initial);     implementation_end;  end;  connections   m1g\p =>| VBy\p user;   VBy\p |=> m1y\p user;   W1\p |=> I1\p user;   VBx\p |=> m1x\p user;   m2g\p =>| Vdy\p user;   Vdy\p |=> m2y\p user;   W2\flow -> Integrate_middle\input;   W2\p |=> I2\p user;   m3g\p =>| Vfy\p user;   Vfy\p |=> m3y\p user;   W3\p |=> I3\p user;   ZeroJunction\p |=> VCy\p user;   ZeroJunction7\p =>| VCy\p user;   ZeroJunction2\p |=> VEy\p user;   ZeroJunction9\p =>| VEy\p user;   MTF1\p2 |=> ZeroJunction1\p user;   MTF3_middle\p2 |=> ZeroJunction7\p user;   MTF2_middle\p2 |=> ZeroJunction2\p user;   MTF4_right\p2 |=> ZeroJunction8\p user;   W1\p |=> MTF4\p1 user;   W1\p |=> MTF1\p1 user;   W1\p |=> MTF3\p1 user;   W2\p |=> MTF3_middle\p1 user;   W2\p |=> MTF4_middle\p1 user;   W2\p =>| MTF1_middle\p1 user;   W2\p |=> MTF2_middle\p1 user;   W3\p |=> MTF4_right\p1 user;   W3\p =>| MTF2_right\p1 user;   Integrate_middle\output -> Splitter1\input;   Splitter1\output -> MTF4_middle\r;   Splitter1\output -> MTF3_middle\r;   Splitter1\output -> MTF1_middle\r;   Splitter1\output -> MTF2_middle\r;   W1\flow -> Integrate_left\input;   Integrate_left\output -> Splitter3\input;   Splitter3\output -> MTF4\r;   Splitter3\output -> MTF3\r;   Splitter3\output -> MTF1\r;   Integrate_right\output -> Splitter2\input;   Splitter2\output -> MTF4_right\r;   Splitter2\output -> MTF2_right\r;   W3\p |=> MTF3_right\p1 user;   MTF3_right\p2 |=> ZeroJunction9\p user;   Splitter2\output -> MTF3_right\r;   m3x\p <=| Vfx\p user;   W3\p |=> MTF1_right\p1 user;   MTF1_right\r <- Splitter2\output;   Vfy\p =>| ZeroJunction9\p user;   MTF1_right\p2 |=> ZeroJunction3\p user;   Sffx\p |=> sffx1jun\p user;   ZeroJunction3\p =>| sffx1jun\p user;   Vfx\p =>| ZeroJunction3\p user;   Vfx\p |=> ZeroJunction8\p user;   ZeroJunction8\p |=> VEx\p user;   Vdy\p |=> ZeroJunction2\p user;   Vdy\p =>| ZeroJunction7\p user;   MTF2_right\p2 =>| ZeroJunction4\p user;   Vfy\p |=> ZeroJunction4\p user;   Sffy\p |=> sffy1jun\p user;   ZeroJunction4\p =>| sffy1jun\p user;   MTF4\p2 => ZeroJunction6\p;   MTF3\p2 |=> ZeroJunction5\p user;   VBx\p => ZeroJunction6\p;   VBy\p =>| ZeroJunction5\p user;   ZeroJunction1\p |=> VCx\p user;   VBx\p => ZeroJunction1\p;   VBy\p |=> ZeroJunction\p user;   W1\p |=> K1\p user;   W3\p |=> K3\p user;   SfBx\p => OneJunction2\p;   ZeroJunction6\p => OneJunction2\p;   ZeroJunction5\p => sfby1jun\p;   SfBy\p => sfby1jun\p;   MTF2\p2 |=> ZeroJunction\p user;   MTF2\p1 <=| W1\p user;   Splitter3\output -> MTF2\r;   Vdx\p |=> m2x\p user;   MTF4_middle\p2 => ZeroJunction10\p;   ZeroJunction10\p => VCx\p;   Vdx\p => ZeroJunction11\p;   MTF1_middle\p2 => ZeroJunction11\p;   ZeroJunction11\p => VEx\p;   Vdx\p => ZeroJunction10\p;   W2\p => K2\p;   W1\p => R\p;   W2\p => R1\p;   W3\p => R2\p;   OneJunction1\p |=> R_motor1\p user;   MSe_volt1\p =>| OneJunction1\p user;   OneJunction1\p |=> I_motor1\p user;   OneJunction1\p =>| GY1\p1 user;   Desired_theta_right\output -> PlusMinus\plus;   PlusMinus\output -> Gain1\input;   W3\flow -> Splitter4\input;   Splitter4\output -> Integrate_right\input;   Splitter2\output -> PlusMinus\minus;   Gain1\output -> MSe_volt1\effort;   Sf\p => W1\p;   GY1\p2 => OneJunction\p;   VCy\flow -> Cy\input;   VEy\flow -> Ey\input;   VEx\flow -> Ex\input;   Cx\input <- VCx\flow;  end; implementation_end;]]>
+  </Sidops>
+</Model>
+ <Experiments>
+  <DefaultExperiment><![CDATA[Experiment 1]]>
+</DefaultExperiment>
+  <Experiment>
+   <Name>Experiment 1</Name>
+   <CreatedBy></CreatedBy>
+   <Info></Info>
+   <ExpData>
+    <VersionNumber>4.1</VersionNumber>
+    <ModelProperties></ModelProperties>
+    <Variables>
+     <Parameters></Parameters>
+     <Initials>
+      <Variable>
+       <Name>K1\state_initial</Name>
+       <Value>0</Value>
+      </Variable>
+      <Variable>
+       <Name>K2\state_initial</Name>
+       <Value>0</Value>
+      </Variable>
+      <Variable>
+       <Name>K3\state_initial</Name>
+       <Value>0</Value>
+      </Variable>
+      <Variable>
+       <Name>m2x\p.e_initial</Name>
+       <Value>0</Value>
+      </Variable>
+      <Variable>
+       <Name>m2y\p.e_initial</Name>
+       <Value>0</Value>
+      </Variable>
+      <Variable>
+       <Name>m3x\p.e_initial</Name>
+       <Value>0</Value>
+      </Variable>
+      <Variable>
+       <Name>m3y\p.e_initial</Name>
+       <Value>0</Value>
+      </Variable>
+      <Variable>
+       <Name>I2\p.e_in_initial</Name>
+       <Value>0</Value>
+      </Variable>
+      <Variable>
+       <Name>I3\p.e_in_initial</Name>
+       <Value>0</Value>
+      </Variable>
+     </Initials>
+    </Variables>
+    <PlotSpecs>
+     <VarNames>
+      <VarName>time</VarName>
+      <VarName>sffx1jun\flow</VarName>
+      <VarName>sfby1jun\flow</VarName>
+      <VarName>VCy\p1.f</VarName>
+      <VarName>VCy\p1.e</VarName>
+      <VarName>Integrate_left\output</VarName>
+      <VarName>Integrate_middle\output</VarName>
+      <VarName>W1\flow</VarName>
+      <VarName>VBy\flow</VarName>
+      <VarName>m1x\state</VarName>
+      <VarName>m2y\p.f</VarName>
+      <VarName>Integrate_right\output</VarName>
+      <VarName>Integrate_right\input</VarName>
+      <VarName>Integrate_left\input</VarName>
+      <VarName>Integrate_middle\input</VarName>
+      <VarName>Cx\output</VarName>
+      <VarName>Cy\output</VarName>
+      <VarName>Ex\output</VarName>
+      <VarName>Ey\output</VarName>
+     </VarNames>
+     <Plots>
+      <Plot>
+       <PlotType>GraphPlot</PlotType>
+       <BasePlot>
+        <UseWindowsBGColor>true</UseWindowsBGColor>
+        <BGColor>15790320</BGColor>
+       </BasePlot>
+       <Grid>
+        <DrawGrid>true</DrawGrid>
+        <GridColor>15780518</GridColor>
+        <XTicks>10</XTicks>
+        <YTicks>10</YTicks>
+        <ZTicks>10</ZTicks>
+        <Use3DLook>false</Use3DLook>
+       </Grid>
+       <PlotBGColor>16777215</PlotBGColor>
+       <ShowPlotTitle>true</ShowPlotTitle>
+       <TitlePosition>1</TitlePosition>
+       <PlotTitle>model</PlotTitle>
+       <ShowXValues>true</ShowXValues>
+       <Fonts>
+        <TitleFont>
+         <Name>Arial</Name>
+         <Height>12</Height>
+         <PitchFamily>34</PitchFamily>
+         <Weight>400</Weight>
+         <Italic>0</Italic>
+         <UnderLine>0</UnderLine>
+         <StrikeOut>0</StrikeOut>
+         <Color>0</Color>
+        </TitleFont>
+        <LabelFont>
+         <Name>Arial</Name>
+         <Height>12</Height>
+         <PitchFamily>34</PitchFamily>
+         <Weight>400</Weight>
+         <Italic>0</Italic>
+         <UnderLine>0</UnderLine>
+         <StrikeOut>0</StrikeOut>
+         <Color>0</Color>
+        </LabelFont>
+        <ValuesFont>
+         <Name>Arial</Name>
+         <Height>10</Height>
+         <PitchFamily>34</PitchFamily>
+         <Weight>400</Weight>
+         <Italic>0</Italic>
+         <UnderLine>0</UnderLine>
+         <StrikeOut>0</StrikeOut>
+         <Color>0</Color>
+        </ValuesFont>
+       </Fonts>
+       <SharedXAxis>true</SharedXAxis>
+       <SharedYAxis>true</SharedYAxis>
+       <SharedZAxis>false</SharedZAxis>
+       <XAxes>
+        <Axis>
+         <Minimum>0</Minimum>
+         <Maximum>10</Maximum>
+         <Linear>true</Linear>
+         <Scaling>3</Scaling>
+         <Label>time</Label>
+        </Axis>
+       </XAxes>
+       <YAxes>
+        <Axis>
+         <Minimum>-25</Minimum>
+         <Maximum>25</Maximum>
+         <Linear>true</Linear>
+         <Scaling>1</Scaling>
+         <Label>theta_left</Label>
+        </Axis>
+        <Axis>
+         <Minimum>6.93889390390723e-018</Minimum>
+         <Maximum>0.2</Maximum>
+         <Linear>true</Linear>
+         <Scaling>1</Scaling>
+         <Label>theta_middle</Label>
+        </Axis>
+        <Axis>
+         <Minimum>6.93889390390723e-018</Minimum>
+         <Maximum>0.2</Maximum>
+         <Linear>true</Linear>
+         <Scaling>1</Scaling>
+         <Label>theta_right</Label>
+        </Axis>
+        <Axis>
+         <Minimum>0</Minimum>
+         <Maximum>1</Maximum>
+         <Linear>true</Linear>
+         <Scaling>1</Scaling>
+         <Label>input</Label>
+        </Axis>
+        <Axis>
+         <Minimum>0</Minimum>
+         <Maximum>10</Maximum>
+         <Linear>true</Linear>
+         <Scaling>1</Scaling>
+         <Label>omega middle</Label>
+        </Axis>
+        <Axis>
+         <Minimum>0</Minimum>
+         <Maximum>10</Maximum>
+         <Linear>true</Linear>
+         <Scaling>1</Scaling>
+         <Label>omega right</Label>
+        </Axis>
+        <Axis>
+         <Minimum>-0.211669531030915</Minimum>
+         <Maximum>0</Maximum>
+         <Linear>true</Linear>
+         <Scaling>1</Scaling>
+         <Label>output</Label>
+        </Axis>
+       </YAxes>
+       <ZAxes></ZAxes>
+       <Curves>
+        <Curve>
+         <LineColor>16711935</LineColor>
+         <LineStyle>1</LineStyle>
+         <TickColor>16711935</TickColor>
+         <TickStyle>0</TickStyle>
+         <PixelThresshold>1</PixelThresshold>
+         <LineThickness>1</LineThickness>
+         <LineOrder>1</LineOrder>
+         <ShowYValues>true</ShowYValues>
+         <XCurveData>
+     <ShowUnit>true</ShowUnit>
+     <VarName>time</VarName>
+         </XCurveData>
+         <YCurveData>
+     <ShowUnit>true</ShowUnit>
+     <VarName>Integrate_left\output</VarName>
+         </YCurveData>
+        </Curve>
+        <Curve>
+         <LineColor>255</LineColor>
+         <LineStyle>1</LineStyle>
+         <TickColor>255</TickColor>
+         <TickStyle>0</TickStyle>
+         <PixelThresshold>1</PixelThresshold>
+         <LineThickness>1</LineThickness>
+         <LineOrder>1</LineOrder>
+         <ShowYValues>true</ShowYValues>
+         <XCurveData>
+     <ShowUnit>true</ShowUnit>
+     <VarName>time</VarName>
+         </XCurveData>
+         <YCurveData>
+     <ShowUnit>true</ShowUnit>
+     <VarName>Integrate_middle\output</VarName>
+         </YCurveData>
+        </Curve>
+        <Curve>
+         <LineColor>65280</LineColor>
+         <LineStyle>1</LineStyle>
+         <TickColor>65280</TickColor>
+         <TickStyle>0</TickStyle>
+         <PixelThresshold>1</PixelThresshold>
+         <LineThickness>1</LineThickness>
+         <LineOrder>1</LineOrder>
+         <ShowYValues>true</ShowYValues>
+         <XCurveData>
+     <ShowUnit>true</ShowUnit>
+     <VarName>time</VarName>
+         </XCurveData>
+         <YCurveData>
+     <ShowUnit>true</ShowUnit>
+     <VarName>Integrate_right\output</VarName>
+         </YCurveData>
+        </Curve>
+        <Curve>
+         <LineColor>0</LineColor>
+         <LineStyle>1</LineStyle>
+         <TickColor>0</TickColor>
+         <TickStyle>0</TickStyle>
+         <PixelThresshold>1</PixelThresshold>
+         <LineThickness>1</LineThickness>
+         <LineOrder>1</LineOrder>
+         <ShowYValues>true</ShowYValues>
+         <XCurveData>
+     <ShowUnit>true</ShowUnit>
+     <VarName>time</VarName>
+         </XCurveData>
+         <YCurveData>
+     <ShowUnit>true</ShowUnit>
+     <VarName>Integrate_left\input</VarName>
+         </YCurveData>
+        </Curve>
+        <Curve>
+         <LineColor>10040319</LineColor>
+         <LineStyle>1</LineStyle>
+         <TickColor>10040319</TickColor>
+         <TickStyle>0</TickStyle>
+         <PixelThresshold>1</PixelThresshold>
+         <LineThickness>1</LineThickness>
+         <LineOrder>1</LineOrder>
+         <ShowYValues>true</ShowYValues>
+         <XCurveData>
+     <ShowUnit>true</ShowUnit>
+     <VarName>time</VarName>
+         </XCurveData>
+         <YCurveData>
+     <ShowUnit>true</ShowUnit>
+     <VarName>Integrate_middle\input</VarName>
+         </YCurveData>
+        </Curve>
+        <Curve>
+         <LineColor>16763904</LineColor>
+         <LineStyle>1</LineStyle>
+         <TickColor>16763904</TickColor>
+         <TickStyle>0</TickStyle>
+         <PixelThresshold>1</PixelThresshold>
+         <LineThickness>1</LineThickness>
+         <LineOrder>1</LineOrder>
+         <ShowYValues>true</ShowYValues>
+         <XCurveData>
+     <ShowUnit>true</ShowUnit>
+     <VarName>time</VarName>
+         </XCurveData>
+         <YCurveData>
+     <ShowUnit>true</ShowUnit>
+     <VarName>Integrate_right\input</VarName>
+         </YCurveData>
+        </Curve>
+        <Curve>
+         <LineColor>26367</LineColor>
+         <LineStyle>1</LineStyle>
+         <TickColor>26367</TickColor>
+         <TickStyle>0</TickStyle>
+         <PixelThresshold>1</PixelThresshold>
+         <LineThickness>1</LineThickness>
+         <LineOrder>1</LineOrder>
+         <ShowYValues>true</ShowYValues>
+         <XCurveData>
+     <ShowUnit>true</ShowUnit>
+     <VarName>time</VarName>
+         </XCurveData>
+         <YCurveData>
+     <ShowUnit>true</ShowUnit>
+     <VarName>Cx\output</VarName>
+         </YCurveData>
+        </Curve>
+       </Curves>
+       <Legenda>
+        <ShowLegenda>true</ShowLegenda>
+       </Legenda>
+       <StripChartPlots>
+        <DistributState>2</DistributState>
+        <StripChartPlot>
+         <Legenda>
+     <ShowLegenda>true</ShowLegenda>
+         </Legenda>
+        </StripChartPlot>
+        <StripChartPlot>
+         <Legenda>
+     <ShowLegenda>true</ShowLegenda>
+         </Legenda>
+        </StripChartPlot>
+        <StripChartPlot>
+         <Legenda>
+     <ShowLegenda>true</ShowLegenda>
+         </Legenda>
+        </StripChartPlot>
+        <StripChartPlot>
+         <Legenda>
+     <ShowLegenda>true</ShowLegenda>
+         </Legenda>
+        </StripChartPlot>
+        <StripChartPlot>
+         <Legenda>
+     <ShowLegenda>true</ShowLegenda>
+         </Legenda>
+        </StripChartPlot>
+        <StripChartPlot>
+         <Legenda>
+     <ShowLegenda>true</ShowLegenda>
+         </Legenda>
+        </StripChartPlot>
+        <StripChartPlot>
+         <Legenda>
+     <ShowLegenda>true</ShowLegenda>
+         </Legenda>
+        </StripChartPlot>
+       </StripChartPlots>
+      </Plot>
+      <Plot>
+       <PlotType>D3DPlot</PlotType>
+       <BasePlot>
+        <UseWindowsBGColor>true</UseWindowsBGColor>
+        <BGColor>15790320</BGColor>
+       </BasePlot>
+       <RenderQuality>137</RenderQuality>
+       <ShowGrid>true</ShowGrid>
+       <BackgroundColor>4294967295</BackgroundColor>
+       <FrameScale>1</FrameScale>
+       <FrameThickness>1</FrameThickness>
+       <MainFrame>
+        <Frame>
+         <ScaleValue>
+     <X>
+      <Value>1</Value>
+     </X>
+     <Y>
+      <Value>1</Value>
+     </Y>
+     <Z>
+      <Value>1</Value>
+     </Z>
+         </ScaleValue>
+         <ShowReferenceFrame>true</ShowReferenceFrame>
+         <Name>Reference Frame</Name>
+         <Position></Position>
+         <Orientation>
+     <Angles></Angles>
+     <OrientationType>Bryant</OrientationType>
+         </Orientation>
+         <LockX>false</LockX>
+         <LockY>false</LockY>
+         <LockZ>false</LockZ>
+         <LockXPitch>false</LockXPitch>
+         <LockYYaw>false</LockYYaw>
+         <LockZRoll>false</LockZRoll>
+         <Childs>
+     <Frame>
+      <ScaleValue>
+       <X>
+        <Value>1</Value>
+       </X>
+       <Y>
+        <Value>1</Value>
+       </Y>
+       <Z>
+        <Value>1</Value>
+       </Z>
+      </ScaleValue>
+      <ShowReferenceFrame>false</ShowReferenceFrame>
+      <Name>Default Lights and Cameras</Name>
+      <Position></Position>
+      <Orientation>
+       <Angles></Angles>
+       <OrientationType>Bryant</OrientationType>
+      </Orientation>
+      <LockX>false</LockX>
+      <LockY>false</LockY>
+      <LockZ>false</LockZ>
+      <LockXPitch>false</LockXPitch>
+      <LockYYaw>false</LockYYaw>
+      <LockZRoll>false</LockZRoll>
+      <Childs>
+       <Light>
+        <ShowReferenceFrame>false</ShowReferenceFrame>
+        <Name>Ambient</Name>
+        <Position></Position>
+        <Orientation>
+         <ZAxis>
+     <Z>
+      <Value>1</Value>
+     </Z>
+         </ZAxis>
+         <YAxis>
+     <Y>
+      <Value>1</Value>
+     </Y>
+         </YAxis>
+         <OrientationType>Direct3D</OrientationType>
+        </Orientation>
+        <LockX>false</LockX>
+        <LockY>false</LockY>
+        <LockZ>false</LockZ>
+        <LockXPitch>false</LockXPitch>
+        <LockYYaw>false</LockYYaw>
+        <LockZRoll>false</LockZRoll>
+        <Childs></Childs>
+        <LightType>0</LightType>
+        <LightColor>
+         <Color>
+     <X>
+      <Value>0.3</Value>
+     </X>
+     <Y>
+      <Value>0.3</Value>
+     </Y>
+     <Z>
+      <Value>0.3</Value>
+     </Z>
+         </Color>
+         <Offset></Offset>
+         <Multipliers>
+     <X>
+      <Value>1</Value>
+     </X>
+     <Y>
+      <Value>1</Value>
+     </Y>
+     <Z>
+      <Value>1</Value>
+     </Z>
+         </Multipliers>
+         <Direct3DColorRange>true</Direct3DColorRange>
+        </LightColor>
+        <AmbientLight>
+         <Color>
+     <X>
+      <Value>0.3</Value>
+     </X>
+     <Y>
+      <Value>0.3</Value>
+     </Y>
+     <Z>
+      <Value>0.3</Value>
+     </Z>
+         </Color>
+         <Offset></Offset>
+         <Multipliers>
+     <X>
+      <Value>1</Value>
+     </X>
+     <Y>
+      <Value>1</Value>
+     </Y>
+     <Z>
+      <Value>1</Value>
+     </Z>
+         </Multipliers>
+         <Direct3DColorRange>true</Direct3DColorRange>
+        </AmbientLight>
+        <AmbientOn>true</AmbientOn>
+        <DiffuseOn>false</DiffuseOn>
+        <SpecularOn>false</SpecularOn>
+       </Light>
+       <Light>
+        <ShowReferenceFrame>false</ShowReferenceFrame>
+        <Name>Parallel</Name>
+        <Position>
+         <X>
+     <Value>-3</Value>
+         </X>
+         <Y>
+     <Value>5</Value>
+         </Y>
+         <Z>
+     <Value>3</Value>
+         </Z>
+        </Position>
+        <Orientation>
+         <ZAxis>
+     <X>
+      <Value>0.457495710997814</Value>
+     </X>
+     <Y>
+      <Value>-0.762492851663023</Value>
+     </Y>
+     <Z>
+      <Value>-0.457495710997814</Value>
+     </Z>
+         </ZAxis>
+         <YAxis>
+     <X>
+      <Value>0.235379601434674</Value>
+     </X>
+     <Y>
+      <Value>-0.392299335724456</Value>
+     </Y>
+     <Z>
+      <Value>0.889211827642101</Value>
+     </Z>
+         </YAxis>
+         <OrientationType>Direct3D</OrientationType>
+        </Orientation>
+        <LockX>false</LockX>
+        <LockY>false</LockY>
+        <LockZ>false</LockZ>
+        <LockXPitch>false</LockXPitch>
+        <LockYYaw>false</LockYYaw>
+        <LockZRoll>false</LockZRoll>
+        <Childs></Childs>
+        <LightType>3</LightType>
+        <LightColor>
+         <Color>
+     <X>
+      <Value>0.5</Value>
+     </X>
+     <Y>
+      <Value>0.5</Value>
+     </Y>
+     <Z>
+      <Value>0.5</Value>
+     </Z>
+         </Color>
+         <Offset></Offset>
+         <Multipliers>
+     <X>
+      <Value>1</Value>
+     </X>
+     <Y>
+      <Value>1</Value>
+     </Y>
+     <Z>
+      <Value>1</Value>
+     </Z>
+         </Multipliers>
+         <Direct3DColorRange>true</Direct3DColorRange>
+        </LightColor>
+        <Attenuation>
+         <Constant>
+     <Value>1</Value>
+         </Constant>
+         <Linear>
+     <Value>0</Value>
+         </Linear>
+         <Quadratic>
+     <Value>0</Value>
+         </Quadratic>
+        </Attenuation>
+        <DiffuseLight>
+         <Color>
+     <X>
+      <Value>0.5</Value>
+     </X>
+     <Y>
+      <Value>0.5</Value>
+     </Y>
+     <Z>
+      <Value>0.5</Value>
+     </Z>
+         </Color>
+         <Offset></Offset>
+         <Multipliers>
+     <X>
+      <Value>1</Value>
+     </X>
+     <Y>
+      <Value>1</Value>
+     </Y>
+     <Z>
+      <Value>1</Value>
+     </Z>
+         </Multipliers>
+         <Direct3DColorRange>true</Direct3DColorRange>
+        </DiffuseLight>
+        <SpecularLight>
+         <Color>
+     <X>
+      <Value>0.5</Value>
+     </X>
+     <Y>
+      <Value>0.5</Value>
+     </Y>
+     <Z>
+      <Value>0.5</Value>
+     </Z>
+         </Color>
+         <Offset></Offset>
+         <Multipliers>
+     <X>
+      <Value>1</Value>
+     </X>
+     <Y>
+      <Value>1</Value>
+     </Y>
+     <Z>
+      <Value>1</Value>
+     </Z>
+         </Multipliers>
+         <Direct3DColorRange>true</Direct3DColorRange>
+        </SpecularLight>
+        <AmbientOn>false</AmbientOn>
+        <DiffuseOn>true</DiffuseOn>
+        <SpecularOn>true</SpecularOn>
+       </Light>
+       <Light>
+        <ShowReferenceFrame>false</ShowReferenceFrame>
+        <Name>Spot Light 1</Name>
+        <Position>
+         <X>
+     <Value>-3</Value>
+         </X>
+         <Y>
+     <Value>-5</Value>
+         </Y>
+         <Z>
+     <Value>1</Value>
+         </Z>
+        </Position>
+        <Orientation>
+         <ZAxis>
+     <X>
+      <Value>0.50709255283711</Value>
+     </X>
+     <Y>
+      <Value>0.845154254728517</Value>
+     </Y>
+     <Z>
+      <Value>-0.169030850945703</Value>
+     </Z>
+         </ZAxis>
+         <YAxis>
+     <X>
+      <Value>0.0869656553478673</Value>
+     </X>
+     <Y>
+      <Value>0.144942758913112</Value>
+     </Y>
+     <Z>
+      <Value>0.985610760609162</Value>
+     </Z>
+         </YAxis>
+         <OrientationType>Direct3D</OrientationType>
+        </Orientation>
+        <LockX>false</LockX>
+        <LockY>false</LockY>
+        <LockZ>false</LockZ>
+        <LockXPitch>false</LockXPitch>
+        <LockYYaw>false</LockYYaw>
+        <LockZRoll>false</LockZRoll>
+        <Childs></Childs>
+        <LightType>2</LightType>
+        <LightColor>
+         <Color>
+     <X>
+      <Value>0.5</Value>
+     </X>
+     <Y>
+      <Value>0.5</Value>
+     </Y>
+     <Z>
+      <Value>0.5</Value>
+     </Z>
+         </Color>
+         <Offset></Offset>
+         <Multipliers>
+     <X>
+      <Value>1</Value>
+     </X>
+     <Y>
+      <Value>1</Value>
+     </Y>
+     <Z>
+      <Value>1</Value>
+     </Z>
+         </Multipliers>
+         <Direct3DColorRange>true</Direct3DColorRange>
+        </LightColor>
+        <Attenuation>
+         <Constant>
+     <Value>1</Value>
+         </Constant>
+         <Linear>
+     <Value>0.05</Value>
+         </Linear>
+         <Quadratic>
+     <Value>0.05</Value>
+         </Quadratic>
+        </Attenuation>
+        <Umbra>
+         <Value>1.0471975511966</Value>
+        </Umbra>
+        <Penumbra>
+         <Value>1.0471975511966</Value>
+        </Penumbra>
+        <DiffuseLight>
+         <Color>
+     <X>
+      <Value>0.5</Value>
+     </X>
+     <Y>
+      <Value>0.5</Value>
+     </Y>
+     <Z>
+      <Value>0.5</Value>
+     </Z>
+         </Color>
+         <Offset></Offset>
+         <Multipliers>
+     <X>
+      <Value>1</Value>
+     </X>
+     <Y>
+      <Value>1</Value>
+     </Y>
+     <Z>
+      <Value>1</Value>
+     </Z>
+         </Multipliers>
+         <Direct3DColorRange>true</Direct3DColorRange>
+        </DiffuseLight>
+        <SpecularLight>
+         <Color>
+     <X>
+      <Value>0.5</Value>
+     </X>
+     <Y>
+      <Value>0.5</Value>
+     </Y>
+     <Z>
+      <Value>0.5</Value>
+     </Z>
+         </Color>
+         <Offset></Offset>
+         <Multipliers>
+     <X>
+      <Value>1</Value>
+     </X>
+     <Y>
+      <Value>1</Value>
+     </Y>
+     <Z>
+      <Value>1</Value>
+     </Z>
+         </Multipliers>
+         <Direct3DColorRange>true</Direct3DColorRange>
+        </SpecularLight>
+        <AmbientOn>false</AmbientOn>
+        <DiffuseOn>true</DiffuseOn>
+        <SpecularOn>true</SpecularOn>
+       </Light>
+       <Light>
+        <ShowReferenceFrame>false</ShowReferenceFrame>
+        <Name>Spot Light 2</Name>
+        <Position>
+         <X>
+     <Value>2</Value>
+         </X>
+         <Y>
+     <Value>-3</Value>
+         </Y>
+         <Z>
+     <Value>-1</Value>
+         </Z>
+        </Position>
+        <Orientation>
+         <ZAxis>
+     <X>
+      <Value>-0.534522483824849</Value>
+     </X>
+     <Y>
+      <Value>0.801783725737273</Value>
+     </Y>
+     <Z>
+      <Value>0.267261241912424</Value>
+     </Z>
+         </ZAxis>
+         <YAxis>
+     <X>
+      <Value>0.14824986333222</Value>
+     </X>
+     <Y>
+      <Value>-0.22237479499833</Value>
+     </Y>
+     <Z>
+      <Value>0.963624111659432</Value>
+     </Z>
+         </YAxis>
+         <OrientationType>Direct3D</OrientationType>
+        </Orientation>
+        <LockX>false</LockX>
+        <LockY>false</LockY>
+        <LockZ>false</LockZ>
+        <LockXPitch>false</LockXPitch>
+        <LockYYaw>false</LockYYaw>
+        <LockZRoll>false</LockZRoll>
+        <Childs></Childs>
+        <LightType>2</LightType>
+        <LightColor>
+         <Color>
+     <X>
+      <Value>1</Value>
+     </X>
+     <Y>
+      <Value>1</Value>
+     </Y>
+     <Z>
+      <Value>1</Value>
+     </Z>
+         </Color>
+         <Offset></Offset>
+         <Multipliers>
+     <X>
+      <Value>1</Value>
+     </X>
+     <Y>
+      <Value>1</Value>
+     </Y>
+     <Z>
+      <Value>1</Value>
+     </Z>
+         </Multipliers>
+         <Direct3DColorRange>true</Direct3DColorRange>
+        </LightColor>
+        <Attenuation>
+         <Constant>
+     <Value>1</Value>
+         </Constant>
+         <Linear>
+     <Value>0.05</Value>
+         </Linear>
+         <Quadratic>
+     <Value>0.05</Value>
+         </Quadratic>
+        </Attenuation>
+        <Umbra>
+         <Value>1.5707963267949</Value>
+        </Umbra>
+        <Penumbra>
+         <Value>1.5707963267949</Value>
+        </Penumbra>
+        <DiffuseLight>
+         <Color>
+     <X>
+      <Value>1</Value>
+     </X>
+     <Y>
+      <Value>1</Value>
+     </Y>
+     <Z>
+      <Value>1</Value>
+     </Z>
+         </Color>
+         <Offset></Offset>
+         <Multipliers>
+     <X>
+      <Value>1</Value>
+     </X>
+     <Y>
+      <Value>1</Value>
+     </Y>
+     <Z>
+      <Value>1</Value>
+     </Z>
+         </Multipliers>
+         <Direct3DColorRange>true</Direct3DColorRange>
+        </DiffuseLight>
+        <SpecularLight>
+         <Color>
+     <X>
+      <Value>0.5</Value>
+     </X>
+     <Y>
+      <Value>0.5</Value>
+     </Y>
+     <Z>
+      <Value>0.5</Value>
+     </Z>
+         </Color>
+         <Offset></Offset>
+         <Multipliers>
+     <X>
+      <Value>1</Value>
+     </X>
+     <Y>
+      <Value>1</Value>
+     </Y>
+     <Z>
+      <Value>1</Value>
+     </Z>
+         </Multipliers>
+         <Direct3DColorRange>true</Direct3DColorRange>
+        </SpecularLight>
+        <AmbientOn>false</AmbientOn>
+        <DiffuseOn>true</DiffuseOn>
+        <SpecularOn>true</SpecularOn>
+       </Light>
+       <Camera>
+        <ShowReferenceFrame>false</ShowReferenceFrame>
+        <Name>Camera Looking at Origin</Name>
+        <Position>
+         <X>
+     <Value>2.13772474979418</Value>
+         </X>
+         <Y>
+     <Value>-7.85700632501921</Value>
+         </Y>
+         <Z>
+     <Value>2.93644766544893</Value>
+         </Z>
+        </Position>
+        <Orientation>
+         <ZAxis>
+     <X>
+      <Value>-0.165692746039232</Value>
+     </X>
+     <Y>
+      <Value>0.88904295283881</Value>
+     </Y>
+     <Z>
+      <Value>-0.426788638458932</Value>
+     </Z>
+         </ZAxis>
+         <YAxis>
+     <X>
+      <Value>-0.0781950261121912</Value>
+     </X>
+     <Y>
+      <Value>0.41956415458061</Value>
+     </Y>
+     <Z>
+      <Value>0.904351401880028</Value>
+     </Z>
+         </YAxis>
+         <OrientationType>Direct3D</OrientationType>
+        </Orientation>
+        <LockX>false</LockX>
+        <LockY>false</LockY>
+        <LockZ>false</LockZ>
+        <LockXPitch>false</LockXPitch>
+        <LockYYaw>false</LockYYaw>
+        <LockZRoll>false</LockZRoll>
+        <Childs></Childs>
+        <FrontPlane>0.01</FrontPlane>
+        <BackPlane>100</BackPlane>
+        <Field>0.00392699081698724</Field>
+        <Fieldy>45</Fieldy>
+        <PlaneLeft>-10</PlaneLeft>
+        <PlaneRight>10</PlaneRight>
+        <PlaneTop>10</PlaneTop>
+        <PlaneBottom>-10</PlaneBottom>
+        <UseLookatPosition>true</UseLookatPosition>
+        <LookatPosition>
+         <X>
+     <Value>0.514274022287471</Value>
+         </X>
+         <Y>
+     <Value>0.853800050470114</Value>
+         </Y>
+         <Z>
+     <Value>-1.24520990351727</Value>
+         </Z>
+        </LookatPosition>
+        <UseAlwaysLookUp>true</UseAlwaysLookUp>
+        <LookUpVector>
+         <Z>
+     <Value>1</Value>
+         </Z>
+        </LookUpVector>
+        <RightHand>true</RightHand>
+        <Perspective>true</Perspective>
+        <IsSelectedCamera>true</IsSelectedCamera>
+       </Camera>
+       <Camera>
+        <ShowReferenceFrame>false</ShowReferenceFrame>
+        <Name>Front(XY)-Camera</Name>
+        <Position>
+         <Z>
+     <Value>10</Value>
+         </Z>
+        </Position>
+        <Orientation>
+         <ZAxis>
+     <Z>
+      <Value>-1</Value>
+     </Z>
+         </ZAxis>
+         <YAxis>
+     <Y>
+      <Value>1</Value>
+     </Y>
+         </YAxis>
+         <OrientationType>Direct3D</OrientationType>
+        </Orientation>
+        <LockX>false</LockX>
+        <LockY>false</LockY>
+        <LockZ>false</LockZ>
+        <LockXPitch>false</LockXPitch>
+        <LockYYaw>false</LockYYaw>
+        <LockZRoll>false</LockZRoll>
+        <Childs></Childs>
+        <FrontPlane>0.01</FrontPlane>
+        <BackPlane>100</BackPlane>
+        <Field>10</Field>
+        <Fieldy>45</Fieldy>
+        <PlaneLeft>-10</PlaneLeft>
+        <PlaneRight>10</PlaneRight>
+        <PlaneTop>10</PlaneTop>
+        <PlaneBottom>-10</PlaneBottom>
+        <UseLookatPosition>true</UseLookatPosition>
+        <LookatPosition></LookatPosition>
+        <UseAlwaysLookUp>true</UseAlwaysLookUp>
+        <LookUpVector>
+         <Y>
+     <Value>1</Value>
+         </Y>
+        </LookUpVector>
+        <RightHand>true</RightHand>
+        <Perspective>false</Perspective>
+        <IsSelectedCamera>false</IsSelectedCamera>
+       </Camera>
+       <Camera>
+        <ShowReferenceFrame>false</ShowReferenceFrame>
+        <Name>Side(YZ)-Camera</Name>
+        <Position>
+         <X>
+     <Value>10</Value>
+         </X>
+        </Position>
+        <Orientation>
+         <ZAxis>
+     <X>
+      <Value>-1</Value>
+     </X>
+         </ZAxis>
+         <YAxis>
+     <Z>
+      <Value>1</Value>
+     </Z>
+         </YAxis>
+         <OrientationType>Direct3D</OrientationType>
+        </Orientation>
+        <LockX>false</LockX>
+        <LockY>false</LockY>
+        <LockZ>false</LockZ>
+        <LockXPitch>false</LockXPitch>
+        <LockYYaw>false</LockYYaw>
+        <LockZRoll>false</LockZRoll>
+        <Childs></Childs>
+        <FrontPlane>0.01</FrontPlane>
+        <BackPlane>100</BackPlane>
+        <Field>10</Field>
+        <Fieldy>45</Fieldy>
+        <PlaneLeft>-10</PlaneLeft>
+        <PlaneRight>10</PlaneRight>
+        <PlaneTop>10</PlaneTop>
+        <PlaneBottom>-10</PlaneBottom>
+        <UseLookatPosition>true</UseLookatPosition>
+        <LookatPosition></LookatPosition>
+        <UseAlwaysLookUp>true</UseAlwaysLookUp>
+        <LookUpVector>
+         <Z>
+     <Value>1</Value>
+         </Z>
+        </LookUpVector>
+        <RightHand>true</RightHand>
+        <Perspective>false</Perspective>
+        <IsSelectedCamera>false</IsSelectedCamera>
+       </Camera>
+       <Camera>
+        <ShowReferenceFrame>false</ShowReferenceFrame>
+        <Name>Top(XZ)-Camera</Name>
+        <Position>
+         <Y>
+     <Value>10</Value>
+         </Y>
+        </Position>
+        <Orientation>
+         <ZAxis>
+     <Y>
+      <Value>-1</Value>
+     </Y>
+         </ZAxis>
+         <YAxis>
+     <X>
+      <Value>1</Value>
+     </X>
+         </YAxis>
+         <OrientationType>Direct3D</OrientationType>
+        </Orientation>
+        <LockX>false</LockX>
+        <LockY>false</LockY>
+        <LockZ>false</LockZ>
+        <LockXPitch>false</LockXPitch>
+        <LockYYaw>false</LockYYaw>
+        <LockZRoll>false</LockZRoll>
+        <Childs></Childs>
+        <FrontPlane>0.01</FrontPlane>
+        <BackPlane>100</BackPlane>
+        <Field>10</Field>
+        <Fieldy>45</Fieldy>
+        <PlaneLeft>-10</PlaneLeft>
+        <PlaneRight>10</PlaneRight>
+        <PlaneTop>10</PlaneTop>
+        <PlaneBottom>-10</PlaneBottom>
+        <UseLookatPosition>true</UseLookatPosition>
+        <LookatPosition></LookatPosition>
+        <UseAlwaysLookUp>true</UseAlwaysLookUp>
+        <LookUpVector>
+         <X>
+     <Value>1</Value>
+         </X>
+        </LookUpVector>
+        <RightHand>true</RightHand>
+        <Perspective>false</Perspective>
+        <IsSelectedCamera>false</IsSelectedCamera>
+       </Camera>
+      </Childs>
+     </Frame>
+     <Frame>
+      <ScaleValue>
+       <X>
+        <Value>1</Value>
+       </X>
+       <Y>
+        <Value>1</Value>
+       </Y>
+       <Z>
+        <Value>1</Value>
+       </Z>
+      </ScaleValue>
+      <ShowReferenceFrame>false</ShowReferenceFrame>
+      <Name>Scenery</Name>
+      <Position></Position>
+      <Orientation>
+       <Angles></Angles>
+       <OrientationType>Bryant</OrientationType>
+      </Orientation>
+      <LockX>false</LockX>
+      <LockY>false</LockY>
+      <LockZ>false</LockZ>
+      <LockXPitch>false</LockXPitch>
+      <LockYYaw>false</LockYYaw>
+      <LockZRoll>false</LockZRoll>
+      <Childs></Childs>
+     </Frame>
+     <Square>
+      <CornerInOrigin>false</CornerInOrigin>
+      <XLength>1</XLength>
+      <YLength>1</YLength>
+      <BothSides>true</BothSides>
+      <Accuracy>4</Accuracy>
+      <ScaleValue>
+       <X>
+        <Value>1</Value>
+       </X>
+       <Y>
+        <Value>1</Value>
+       </Y>
+       <Z>
+        <Value>1</Value>
+       </Z>
+      </ScaleValue>
+      <OverrideColor>true</OverrideColor>
+      <MeshColor>
+       <X>
+        <Value>1</Value>
+       </X>
+       <Y>
+        <Value>1</Value>
+       </Y>
+       <Z>
+        <Value>1</Value>
+       </Z>
+      </MeshColor>
+      <Alpha>1</Alpha>
+      <MeshColorMultipliers>
+       <X>
+        <Value>1</Value>
+       </X>
+       <Y>
+        <Value>1</Value>
+       </Y>
+       <Z>
+        <Value>1</Value>
+       </Z>
+      </MeshColorMultipliers>
+      <MeshColorOffsets></MeshColorOffsets>
+      <Direct3DColorRange>true</Direct3DColorRange>
+      <SpecularColor>
+       <X>
+        <Value>0.5</Value>
+       </X>
+       <Y>
+        <Value>0.5</Value>
+       </Y>
+       <Z>
+        <Value>0.5</Value>
+       </Z>
+      </SpecularColor>
+      <EmissiveColor></EmissiveColor>
+      <ShininessPower>
+       <Value>15</Value>
+      </ShininessPower>
+      <OverrideQuality>false</OverrideQuality>
+      <ShowReferenceFrame>false</ShowReferenceFrame>
+      <Name>Square</Name>
+      <Position></Position>
+      <Orientation>
+       <Angles></Angles>
+       <OrientationType>Bryant</OrientationType>
+      </Orientation>
+      <LockX>false</LockX>
+      <LockY>false</LockY>
+      <LockZ>false</LockZ>
+      <LockXPitch>false</LockXPitch>
+      <LockYYaw>false</LockYYaw>
+      <LockZRoll>false</LockZRoll>
+      <Childs></Childs>
+     </Square>
+     <Frame>
+      <ScaleValue></ScaleValue>
+      <ShowReferenceFrame>false</ShowReferenceFrame>
+      <Name>Reference Frame</Name>
+      <Position></Position>
+      <Orientation>
+       <Angles></Angles>
+       <OrientationType>Bryant</OrientationType>
+      </Orientation>
+      <LockX>false</LockX>
+      <LockY>false</LockY>
+      <LockZ>false</LockZ>
+      <LockXPitch>false</LockXPitch>
+      <LockYYaw>false</LockYYaw>
+      <LockZRoll>false</LockZRoll>
+      <Childs></Childs>
+     </Frame>
+     <Line>
+      <Thickness>1</Thickness>
+      <EndPosition>
+       <X>
+        <VariableName>Cx\output</VariableName>
+        <Value>0.895055303806227</Value>
+       </X>
+       <Z>
+        <VariableName>Cy\output</VariableName>
+        <Value>2.63951457276501</Value>
+       </Z>
+      </EndPosition>
+      <CircleElements>15</CircleElements>
+      <Closed>true</Closed>
+      <UseCylinder>true</UseCylinder>
+      <CylinderThickness>0.1</CylinderThickness>
+      <CylinderAccuracy>15</CylinderAccuracy>
+      <Closed>true</Closed>
+      <ScaleValue>
+       <X>
+        <Value>0.1</Value>
+       </X>
+       <Y>
+        <Value>0.1</Value>
+       </Y>
+       <Z>
+        <Value>1.44900572299957</Value>
+       </Z>
+      </ScaleValue>
+      <OverrideColor>true</OverrideColor>
+      <MeshColor>
+       <X>
+        <Value>1</Value>
+       </X>
+       <Y>
+        <Value>1</Value>
+       </Y>
+       <Z>
+        <Value>1</Value>
+       </Z>
+      </MeshColor>
+      <Alpha>1</Alpha>
+      <MeshColorMultipliers>
+       <X>
+        <Value>1</Value>
+       </X>
+       <Y>
+        <Value>1</Value>
+       </Y>
+       <Z>
+        <Value>1</Value>
+       </Z>
+      </MeshColorMultipliers>
+      <MeshColorOffsets></MeshColorOffsets>
+      <Direct3DColorRange>true</Direct3DColorRange>
+      <SpecularColor>
+       <X>
+        <Value>0.5</Value>
+       </X>
+       <Y>
+        <Value>0.5</Value>
+       </Y>
+       <Z>
+        <Value>0.5</Value>
+       </Z>
+      </SpecularColor>
+      <EmissiveColor></EmissiveColor>
+      <ShininessPower>
+       <Value>15</Value>
+      </ShininessPower>
+      <OverrideQuality>false</OverrideQuality>
+      <ShowReferenceFrame>false</ShowReferenceFrame>
+      <Name>Line1</Name>
+      <Position>
+       <Z>
+        <Value>1.5</Value>
+       </Z>
+      </Position>
+      <Orientation>
+       <ZAxis>
+        <X>
+         <Value>0.617703102645709</Value>
+        </X>
+        <Z>
+         <Value>0.786411391691311</Value>
+        </Z>
+       </ZAxis>
+       <YAxis>
+        <Y>
+         <Value>1</Value>
+        </Y>
+       </YAxis>
+       <OrientationType>Direct3D</OrientationType>
+      </Orientation>
+      <LockX>false</LockX>
+      <LockY>false</LockY>
+      <LockZ>false</LockZ>
+      <LockXPitch>false</LockXPitch>
+      <LockYYaw>false</LockYYaw>
+      <LockZRoll>false</LockZRoll>
+      <Childs></Childs>
+     </Line>
+     <Line>
+      <Thickness>1</Thickness>
+      <EndPosition>
+       <X>
+        <VariableName>Ex\output</VariableName>
+        <Value>1.09712090441448</Value>
+       </X>
+       <Z>
+        <VariableName>Ey\output</VariableName>
+        <Value>1.61583695019893</Value>
+       </Z>
+      </EndPosition>
+      <CircleElements>15</CircleElements>
+      <Closed>true</Closed>
+      <UseCylinder>true</UseCylinder>
+      <CylinderThickness>0.1</CylinderThickness>
+      <CylinderAccuracy>15</CylinderAccuracy>
+      <Closed>true</Closed>
+      <ScaleValue>
+       <X>
+        <Value>0.1</Value>
+       </X>
+       <Y>
+        <Value>0.1</Value>
+       </Y>
+       <Z>
+        <Value>1.04343008995056</Value>
+       </Z>
+      </ScaleValue>
+      <OverrideColor>true</OverrideColor>
+      <MeshColor>
+       <X>
+        <Value>1</Value>
+       </X>
+       <Y>
+        <Value>1</Value>
+       </Y>
+       <Z>
+        <Value>1</Value>
+       </Z>
+      </MeshColor>
+      <Alpha>1</Alpha>
+      <MeshColorMultipliers>
+       <X>
+        <Value>1</Value>
+       </X>
+       <Y>
+        <Value>1</Value>
+       </Y>
+       <Z>
+        <Value>1</Value>
+       </Z>
+      </MeshColorMultipliers>
+      <MeshColorOffsets></MeshColorOffsets>
+      <Direct3DColorRange>true</Direct3DColorRange>
+      <SpecularColor>
+       <X>
+        <Value>0.5</Value>
+       </X>
+       <Y>
+        <Value>0.5</Value>
+       </Y>
+       <Z>
+        <Value>0.5</Value>
+       </Z>
+      </SpecularColor>
+      <EmissiveColor></EmissiveColor>
+      <ShininessPower>
+       <Value>15</Value>
+      </ShininessPower>
+      <OverrideQuality>false</OverrideQuality>
+      <ShowReferenceFrame>false</ShowReferenceFrame>
+      <Name>Line2</Name>
+      <Position>
+       <X>
+        <VariableName>Cx\output</VariableName>
+        <Value>0.895055303806227</Value>
+       </X>
+       <Z>
+        <VariableName>Cy\output</VariableName>
+        <Value>2.63951457276501</Value>
+       </Z>
+      </Position>
+      <Orientation>
+       <ZAxis>
+        <X>
+         <Value>0.193655137835783</Value>
+        </X>
+        <Z>
+         <Value>-0.981069665003359</Value>
+        </Z>
+       </ZAxis>
+       <YAxis>
+        <Y>
+         <Value>1</Value>
+        </Y>
+       </YAxis>
+       <OrientationType>Direct3D</OrientationType>
+      </Orientation>
+      <LockX>false</LockX>
+      <LockY>false</LockY>
+      <LockZ>false</LockZ>
+      <LockXPitch>false</LockXPitch>
+      <LockYYaw>false</LockYYaw>
+      <LockZRoll>false</LockZRoll>
+      <Childs></Childs>
+     </Line>
+     <Frame>
+      <ScaleValue>
+       <X>
+        <Value>1</Value>
+       </X>
+       <Y>
+        <Value>1</Value>
+       </Y>
+       <Z>
+        <Value>1</Value>
+       </Z>
+      </ScaleValue>
+      <ShowReferenceFrame>false</ShowReferenceFrame>
+      <Name>Reference Frame</Name>
+      <Position></Position>
+      <Orientation>
+       <Angles></Angles>
+       <OrientationType>Bryant</OrientationType>
+      </Orientation>
+      <LockX>false</LockX>
+      <LockY>false</LockY>
+      <LockZ>false</LockZ>
+      <LockXPitch>false</LockXPitch>
+      <LockYYaw>false</LockYYaw>
+      <LockZRoll>false</LockZRoll>
+      <Childs></Childs>
+     </Frame>
+     <Line>
+      <Thickness>1</Thickness>
+      <EndPosition>
+       <X>
+        <Value>2</Value>
+       </X>
+       <Z>
+        <Value>1</Value>
+       </Z>
+      </EndPosition>
+      <CircleElements>15</CircleElements>
+      <Closed>true</Closed>
+      <UseCylinder>true</UseCylinder>
+      <CylinderThickness>0.1</CylinderThickness>
+      <CylinderAccuracy>15</CylinderAccuracy>
+      <Closed>true</Closed>
+      <ScaleValue>
+       <X>
+        <Value>0.1</Value>
+       </X>
+       <Y>
+        <Value>0.1</Value>
+       </Y>
+       <Z>
+        <Value>1.09290707111359</Value>
+       </Z>
+      </ScaleValue>
+      <OverrideColor>true</OverrideColor>
+      <MeshColor>
+       <X>
+        <Value>1</Value>
+       </X>
+       <Y>
+        <Value>1</Value>
+       </Y>
+       <Z>
+        <Value>1</Value>
+       </Z>
+      </MeshColor>
+      <Alpha>1</Alpha>
+      <MeshColorMultipliers>
+       <X>
+        <Value>1</Value>
+       </X>
+       <Y>
+        <Value>1</Value>
+       </Y>
+       <Z>
+        <Value>1</Value>
+       </Z>
+      </MeshColorMultipliers>
+      <MeshColorOffsets></MeshColorOffsets>
+      <Direct3DColorRange>true</Direct3DColorRange>
+      <SpecularColor>
+       <X>
+        <Value>0.5</Value>
+       </X>
+       <Y>
+        <Value>0.5</Value>
+       </Y>
+       <Z>
+        <Value>0.5</Value>
+       </Z>
+      </SpecularColor>
+      <EmissiveColor></EmissiveColor>
+      <ShininessPower>
+       <Value>15</Value>
+      </ShininessPower>
+      <OverrideQuality>false</OverrideQuality>
+      <ShowReferenceFrame>false</ShowReferenceFrame>
+      <Name>Line3</Name>
+      <Position>
+       <X>
+        <VariableName>Ex\output</VariableName>
+        <Value>1.09712090441448</Value>
+       </X>
+       <Z>
+        <VariableName>Ey\output</VariableName>
+        <Value>1.61583695019893</Value>
+       </Z>
+      </Position>
+      <Orientation>
+       <ZAxis>
+        <X>
+         <Value>0.826126155158806</Value>
+        </X>
+        <Z>
+         <Value>-0.563485204563997</Value>
+        </Z>
+       </ZAxis>
+       <YAxis>
+        <Y>
+         <Value>1</Value>
+        </Y>
+       </YAxis>
+       <OrientationType>Direct3D</OrientationType>
+      </Orientation>
+      <LockX>false</LockX>
+      <LockY>false</LockY>
+      <LockZ>false</LockZ>
+      <LockXPitch>false</LockXPitch>
+      <LockYYaw>false</LockYYaw>
+      <LockZRoll>false</LockZRoll>
+      <Childs></Childs>
+     </Line>
+         </Childs>
+        </Frame>
+       </MainFrame>
+      </Plot>
+     </Plots>
+     <WindowRectangles virtualDesktopWidth="1366" virtualDesktopHeight="768">
+      <WindowRectangle monitor="0" left="0" top="0" right="1366" bottom="768">0.00585652 0.0390625 1.00512 0.960938</WindowRectangle>
+      <WindowRectangle monitor="0" left="0" top="0" right="1366" bottom="768">0.0929722 0.0950521 0.897511 0.898438</WindowRectangle>
+     </WindowRectangles>
+    </PlotSpecs>
+    <RunSpecs>
+     <SimulatorSettings>
+      <StartTime>0</StartTime>
+      <FinishTime>10</FinishTime>
+      <Warp>false</Warp>
+      <UseOutputAfterEach>false</UseOutputAfterEach>
+      <OutputAfterEach>0.1</OutputAfterEach>
+      <EventEpsilon>1e-006</EventEpsilon>
+      <AlgebraicTolerance>1e-007</AlgebraicTolerance>
+      <SteadyStateAnalysis>false</SteadyStateAnalysis>
+     </SimulatorSettings>
+     <IntegrationMethods>
+      <IntegrationMethod>
+       <Name>Euler</Name>
+       <StepSize>0.01</StepSize>
+      </IntegrationMethod>
+      <IntegrationMethod>
+       <Name>BackwardEuler</Name>
+       <AbsoluteTolerance>1e-005</AbsoluteTolerance>
+       <RelativeTolerance>1e-005</RelativeTolerance>
+       <AlgebraicAbsoluteTolerance>1e-005</AlgebraicAbsoluteTolerance>
+       <AlgebraicRelativeTolerance>1e-005</AlgebraicRelativeTolerance>
+       <StepSize>0.01</StepSize>
+       <Alpha>1</Alpha>
+      </IntegrationMethod>
+      <IntegrationMethod>
+       <Name>AdamsBashforth</Name>
+       <StepSize>0.01</StepSize>
+      </IntegrationMethod>
+      <IntegrationMethod>
+       <Name>RungeKutta2</Name>
+       <StepSize>0.01</StepSize>
+      </IntegrationMethod>
+      <IntegrationMethod>
+       <Name>RungeKutta4</Name>
+       <StepSize>0.01</StepSize>
+      </IntegrationMethod>
+      <IntegrationMethod>
+       <Name>RungeKutta8</Name>
+       <UseInitialStepSize>false</UseInitialStepSize>
+       <InitialStepSize>0</InitialStepSize>
+       <UseMaximumStepSize>false</UseMaximumStepSize>
+       <MaximumStepSize>0</MaximumStepSize>
+       <AbsoluteTolerance>1e-006</AbsoluteTolerance>
+       <RelativeTolerance>1e-006</RelativeTolerance>
+       <SafetyFactor>0.9</SafetyFactor>
+       <Factor1>0.33</Factor1>
+       <Factor2>6</Factor2>
+       <Beta>0</Beta>
+       <UseMaxNrSteps>false</UseMaxNrSteps>
+       <MaxNrSteps>100000</MaxNrSteps>
+       <UseStiffDetection>false</UseStiffDetection>
+       <MaxNrStiffnessSteps>1000</MaxNrStiffnessSteps>
+      </IntegrationMethod>
+      <IntegrationMethod>
+       <Name>RungeKuttaFehlberg</Name>
+       <UseInitialStepSize>false</UseInitialStepSize>
+       <InitialStepSize>0</InitialStepSize>
+       <UseMaximumStepSize>false</UseMaximumStepSize>
+       <MaximumStepSize>0</MaximumStepSize>
+       <AbsoluteTolerance>1e-006</AbsoluteTolerance>
+       <RelativeTolerance>1e-006</RelativeTolerance>
+      </IntegrationMethod>
+      <IntegrationMethod>
+       <Name>VodeAdams</Name>
+       <UseInitialStepSize>false</UseInitialStepSize>
+       <InitialStepSize>0</InitialStepSize>
+       <UseMaximumStepSize>false</UseMaximumStepSize>
+       <MaximumStepSize>0</MaximumStepSize>
+       <AbsoluteTolerance>1e-006</AbsoluteTolerance>
+       <RelativeTolerance>1e-006</RelativeTolerance>
+      </IntegrationMethod>
+      <IntegrationMethod>
+       <Name>BDFMethod</Name>
+       <AbsoluteTolerance>1e-005</AbsoluteTolerance>
+       <RelativeTolerance>1e-005</RelativeTolerance>
+       <AlgebraicAbsoluteTolerance>1e-005</AlgebraicAbsoluteTolerance>
+       <AlgebraicRelativeTolerance>1e-005</AlgebraicRelativeTolerance>
+       <UseInitialStepSize>true</UseInitialStepSize>
+       <InitialStepSize>0.1</InitialStepSize>
+       <UseMaximumStepSize>true</UseMaximumStepSize>
+       <MaximumStepSize>1</MaximumStepSize>
+       <UseFixedStepSize>false</UseFixedStepSize>
+       <FixedStepSize>0</FixedStepSize>
+      </IntegrationMethod>
+      <IntegrationMethod>
+       <Name>MeBDFiMethod</Name>
+       <AbsoluteTolerance>1e-005</AbsoluteTolerance>
+       <RelativeTolerance>1e-005</RelativeTolerance>
+       <AlgebraicAbsoluteTolerance>1e-005</AlgebraicAbsoluteTolerance>
+       <AlgebraicRelativeTolerance>1e-005</AlgebraicRelativeTolerance>
+       <UseInitialStepSize>false</UseInitialStepSize>
+       <InitialStepSize>0</InitialStepSize>
+       <UseMaximumStepSize>false</UseMaximumStepSize>
+       <MaximumStepSize>0</MaximumStepSize>
+       <UseFixedStepSize>false</UseFixedStepSize>
+       <FixedStepSize>0</FixedStepSize>
+      </IntegrationMethod>
+      <SelectedIntegrationMethod>8</SelectedIntegrationMethod>
+     </IntegrationMethods>
+    </RunSpecs>
+    <MultipleRun>
+     <NrSteps>10</NrSteps>
+     <CopyFromStates>false</CopyFromStates>
+     <JoinParameterVariation>true</JoinParameterVariation>
+     <ClearAfterRun>true</ClearAfterRun>
+     <RedrawAfterRun>false</RedrawAfterRun>
+     <DrawDuringSimulation>true</DrawDuringSimulation>
+     <ActionBeforeOptimization>0</ActionBeforeOptimization>
+     <CompareValue>0</CompareValue>
+     <UseCompareValue>true</UseCompareValue>
+     <MultipleRunType>MultipleRun</MultipleRunType>
+     <Minimize>true</Minimize>
+     <OptimizationVariable></OptimizationVariable>
+     <ResulVarUsage>UseEndValue</ResulVarUsage>
+     <Tolerance>0.001</Tolerance>
+     <OptimizationMethod>BroydonFletcherGoldfarbShanno</OptimizationMethod>
+     <MultipleRunVariables></MultipleRunVariables>
+    </MultipleRun>
+    <ExportData>
+     <WriteAsText>true</WriteAsText>
+     <ReadAsText>true</ReadAsText>
+     <WriteHeader>true</WriteHeader>
+     <ReadHeader>true</ReadHeader>
+     <ReadFilename></ReadFilename>
+     <WriteFilename></WriteFilename>
+     <DoWrite>false</DoWrite>
+     <ExportVariables></ExportVariables>
+     <ImportVariables></ImportVariables>
+    </ExportData>
+    <BreakPoints></BreakPoints>
+    <AnimationPlayback>
+     <PlaybackSpeed>1</PlaybackSpeed>
+    </AnimationPlayback>
+   </ExpData>
+  </Experiment>
+ </Experiments>
+</Document>
